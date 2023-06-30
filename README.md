@@ -32,6 +32,7 @@ docker-compose up --build
 ## Kubernization
 
 ```
+export KUBECONFIG=output/kubeconfig.yaml
 kind create cluster --name pr-k8s
 ```
 
