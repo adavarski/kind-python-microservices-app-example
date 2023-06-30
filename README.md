@@ -1,6 +1,6 @@
 ## Simple python:flask microservices app (for playgrounds & LABS) 
 
-This is a simple Flask application with a Dockerfiles and Kubernetes manifests to help you deploy it locally in 3 different ways.
+This is a simple Flask application with Dockerfiles and Kubernetes manifests to help you deploy it locally in 3 different ways.
 - Python & Flask on localhost.
 - Docker containers (docker-compose).
 - Kubernetes in kind cluster.
@@ -20,9 +20,12 @@ App can be run using the docker-compose file in deployment-docker or using kuber
 
 ```
 cd frontend
+pip3 install -r requirements.txt
 python3 app.py
 
+### Note: other terminal
 cd backend
+pip3 install -r requirements.txt
 python3 app.py
 ```
 
@@ -59,7 +62,6 @@ kind load docker-image pr-fe --name pr-k8s
 kind load docker-image pr-be --name pr-k8s
 
 ```
-
 
 ```
 kubectl apply -f k8s
