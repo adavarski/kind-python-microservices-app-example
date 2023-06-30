@@ -90,12 +90,12 @@ kind load docker-image pr-fe --name pr-k8s
 
 kubectl rollout restart deployment/pr-fe
 
-kubectl port-forward svc/pr-ui 9090:80
+kubectl port-forward svc/pr-ui 9090:80 &
 ```
 
 Clean:
 
 ```
-kind delete cluster
+kind delete cluster --name=pr-k8s
 
 ```
