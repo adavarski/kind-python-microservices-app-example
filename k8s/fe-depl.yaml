@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pr-fe
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: pr-fe
+  template:
+    metadata:
+      labels:
+        app: pr-fe
+    spec:
+      containers:
+      - name: pr-fe
+        image: pr-fe:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5004
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: API_BASE
+            value: http://pr-be:5003/
+      

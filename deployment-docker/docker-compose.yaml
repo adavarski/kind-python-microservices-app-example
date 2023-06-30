@@ -1,0 +1,41 @@
+version: '3.3'
+
+networks:
+  pr_network:
+    external:
+      name: pr_network
+
+services:
+
+  # Backend
+  pr_be:
+    container_name: pr_be_service
+    build:
+      context: ../backend
+    ports:
+      - "5003:5003"
+    volumes:
+      - ../backend:/app
+    environment:
+      # WORKER_SMTP_PORT: 265
+      PR_BACKEND_PORT: 5003
+    # command: python app.py
+    networks:
+      - pr_network
+
+
+  # Frontend
+  pr_fe:
+    container_name: pr_fe_service
+    build:
+      context: ../frontend
+    ports:
+      - "5004:5004"
+    volumes:
+      - ../frontend:/app
+    environment:
+      # app-env: "dev from docker compose"
+      API_BASE: 'http://pr_be_service:5003/'
+    # command: python app.py
+    networks:
+      - pr_network
