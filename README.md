@@ -3,6 +3,18 @@
 Simple app that connects frontend with backend and acts as a microservice.
 Frontend serves the backend through backend consumer. App can be run using the docker-compose file in deployment-docker or using kubernetes (kind).
 
+This is a simple Flask application with a Dockerfile and Kubernetes manifests to help you deploy it locally in 3 different ways.
+- Python & Flask on localhost.
+- Docker containers (docker-compose).
+- Kubernetes in kind cluster.
+
+## Requirements
+
+- Python 3 installed (if you want to run the application locally)
+- Docker & docker-compose installed
+- [Kind installed](https://kind.sigs.k8s.io/)
+
+
 ## Running locally
 
 ```
